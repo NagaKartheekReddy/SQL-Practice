@@ -1,0 +1,23 @@
+Problem statement:
+
+https://www.hackerrank.com/challenges/binary-search-tree-1/problem
+
+Sample output
+1 Leaf
+2 Inner
+3 Leaf
+5 Root
+6 Leaf
+8 Inner
+9 Leaf
+
+Query:
+
+Select CASE
+    WHEN P IS NULL THEN CONCAT(N, ' Root')
+    WHEN N IN (SELECT DISTINCT P FROM BST) THEN CONCAT(N, ' Inner')
+    ELSE CONCAT(N, ' Leaf')
+    END
+FROM BST
+ORDER BY N ASC
+
