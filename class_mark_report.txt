@@ -1,0 +1,24 @@
+Problem statement:
+
+https://www.hackerrank.com/challenges/the-report/problem
+
+Ketty gives Eve a task to generate a report containing three columns: Name, Grade and Mark. 
+
+1. Ketty doesn't want the NAMES of those students who received a grade lower than 8. 
+
+2. The report must be in descending order by grade -- i.e. higher grades are entered first. If there is more than one student with the same grade (8-10) assigned to them, order those particular students by their name alphabetically. 
+
+3. Finally, if the grade is lower than 8, use "NULL" as their name and list them by their grades in descending order. 
+
+4. If there is more than one student with the same grade (1-7) 
+assigned to them, order those particular students by their marks in ascending order.
+
+Query:
+
+select (case when g.Grade<8 then NULL else s.Name end) as Name, g.Grade, s.Marks
+
+from Students as s, Grades as g
+
+where s.Marks between g.Min_Mark and g.Max_Mark
+
+order by g.Grade Desc, Name, s.Marks ASC
