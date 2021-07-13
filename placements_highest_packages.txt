@@ -1,0 +1,26 @@
+Problem Statement:
+
+https://www.hackerrank.com/challenges/placements/problem
+
+1.Write a query to output the names of those students whose best friends got offered a higher salary than them.
+
+2. Names must be ordered by the salary amount offered to the best friends. It is guaranteed that no two students got same salary offer.
+
+
+Query:
+
+with fp as (
+    select f.ID, f.Friend_ID, p.Salary
+    from Friends f
+    inner join Packages p
+    on f.Friend_ID = p.ID
+)
+
+select Name
+from Students s
+inner join fp
+on fs.ID = s.ID
+inner join Packages p
+on s.ID = p.ID
+where fp.Salary > p.Salary
+order by fs.Salary
